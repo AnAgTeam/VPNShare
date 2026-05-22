@@ -1,8 +1,8 @@
-Package: org.toilettrauma.misdhook
-Name: MISD Hook
+Package: org.toilettrauma.vpnshare
+Name: VPNShare
 Version: 0.0.1
 Architecture: iphoneos-arm64
-Description: An awesome MobileSubstrate tweak!
+Description: Share your VPN tunnel over Personal Hotspot by suppressing iOS's auto-installed Packet Filter rules.
 Maintainer: toilett
 Author: toilett
 Section: Tweaks

@@ -5,11 +5,11 @@ THEOS_PACKAGE_SCHEME = rootless
 
 include $(THEOS)/makefiles/common.mk
 
-TWEAK_NAME = MISDHook
+TWEAK_NAME = VPNShare
 
-MISDHook_FILES = Tweak.x
-MISDHook_CFLAGS = -fobjc-arc -I./headers
-MISDHook_PRIVATE_FRAMEWORKS = PacketFilter
-MISDHook_LIBRARIES = substrate
+VPNShare_FILES = Tweak.x
+VPNShare_CFLAGS = -fobjc-arc -I./headers
+VPNShare_PRIVATE_FRAMEWORKS = PacketFilter
+VPNShare_LIBRARIES = substrate
 
 include $(THEOS_MAKE_PATH)/tweak.mk
