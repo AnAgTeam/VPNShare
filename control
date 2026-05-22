@@ -7,3 +7,4 @@ Maintainer: toilett
 Author: toilett
 Section: Tweaks
 Depends: ellekit
+Sileo-Required-Action: nothing
