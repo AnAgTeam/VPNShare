@@ -172,5 +172,5 @@ The output `.deb` ends up in `packages/`.
 
 ## License
 
-No license attached — use at your own risk. Anchored to a single private
-daemon's behavior; Apple can break this any update.
+[MIT](LICENSE). Anchored to a single private daemon's behavior; Apple can
+break this any update — use at your own risk.
