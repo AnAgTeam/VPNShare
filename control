@@ -1,0 +1,9 @@
+Package: org.toilettrauma.misdhook
+Name: MISD Hook
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Description: An awesome MobileSubstrate tweak!
+Maintainer: toilett
+Author: toilett
+Section: Tweaks
+Depends: ellekit
