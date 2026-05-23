@@ -1,0 +1,57 @@
+name: Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      ios_version:
+        description: 'Select needed SDK'
+        required: true
+        default: '16.5'
+        type: choice
+        options:
+          - '16.5'
+          - '15.6'
+          - '14.5'
+          - '13.7'
+          - '12.4'
+          - '11.4'
+          - '10.3'
+          - '9.3'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git dpkg-dev make gcc unzip curl
+
+      - name: Install Theos with selected iOS SDK
+        uses: Randomblock1/theos-action@v1
+        with:
+          theos-dir: '${{ github.workspace }}/theos'
+          theos-sdks: 'https://github.com/theos/sdks'
+          sdk-version: ${{ github.event.inputs.ios_version }}
+          orion: 'false'
+
+      - name: Build the tweak
+        run: |
+          export THEOS=${{ github.workspace }}/theos
+          export PATH=$THEOS/bin:$PATH
+          export SDK_VER="${{ github.event.inputs.ios_version }}"
+          export TARGET="iphone:clang:$SDK_VER:$SDK_VER"
+          make package
+
+      - name: List built packages (debug)
+        run: ls -la packages/ || echo "No packages found"
+
+      - name: Upload .deb artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: VPNShare-${{ github.event.inputs.ios_version }}.deb
+          path: packages/*.deb
+          retention-days: 7
